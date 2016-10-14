@@ -2,6 +2,7 @@ window.addEventListener("load", function(){
 	var win = true;
 	var myBoundary = document.querySelectorAll(".boundary");
 	var end = document.getElementById("end");
+	var start = document.getElementById("start");
 	//apply event handler to all .boundary class
 		for (var i = 0; i < myBoundary.length - 1; i++ )
 		{
@@ -20,5 +21,12 @@ window.addEventListener("load", function(){
 				alert("You Win!");
 			}
 			
+		})
+
+		start.addEventListener("click", function(){
+			for (var i = 0; i < myBoundary.length; i++)
+			{
+				myBoundary[i].setAttribute("class", "boundary");
+			}
 		})
 });
