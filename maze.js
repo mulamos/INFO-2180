@@ -3,6 +3,8 @@ window.addEventListener("load", function(){
 	var myBoundary = document.querySelectorAll(".boundary");
 	var end = document.getElementById("end");
 	var start = document.getElementById("start");
+	var status = document.getElementById("status");
+	var maze = document.getElementById("maze");
 
 	//apply event handler to all .boundary class
 		for (var i = 0; i < myBoundary.length - 1; i++ )
@@ -13,16 +15,15 @@ window.addEventListener("load", function(){
 					myBoundary[j].setAttribute("class", "boundary youlose");
 					win = false;
 				}
-				status.innerHTML = "You Lose!";
+				status.innerHTML = "You Lose! :(";
 			});
-		}
+		}	
 
-		var status = document.getElementById("status");
 		end.addEventListener("mouseover", function(){
 
-			if (win){
-				status.innerHTML = "You Win!";
-
+			if (win)
+			{
+				status.innerHTML = "You Win! :)";
 			}
 			
 		})
@@ -32,5 +33,31 @@ window.addEventListener("load", function(){
 			{
 				myBoundary[i].setAttribute("class", "boundary");
 			}
-		})
+			var top = maze.offsetTop;
+			var left = maze.offsetLeft;
+			var height = maze.offsetHeight;
+			var width = maze.offsetWidth;
+
+			
+			window.addEventListener("mousemove", function(event){
+				var x = event.clientX;
+				var y = event.clientY;
+				console.log(x);
+				if ((x < left) || (x > width + left) || (y < top) || (y > height + top))
+				{
+					console.log('test');
+					for (var i = 0; i < myBoundary.length - 1; i++)
+					{
+						myBoundary[i].setAttribute("class", "boundary youlose");
+						win = false;
+
+						status.innerHTML = "You're Cheating!";
+
+					}
+			}
+		});
+	});
 });
+
+
+
