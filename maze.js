@@ -3,6 +3,7 @@ window.addEventListener("load", function(){
 	var myBoundary = document.querySelectorAll(".boundary");
 	var end = document.getElementById("end");
 	var start = document.getElementById("start");
+
 	//apply event handler to all .boundary class
 		for (var i = 0; i < myBoundary.length - 1; i++ )
 		{
@@ -12,13 +13,16 @@ window.addEventListener("load", function(){
 					myBoundary[j].setAttribute("class", "boundary youlose");
 					win = false;
 				}
+				status.innerHTML = "You Lose!";
 			});
 		}
 
-
+		var status = document.getElementById("status");
 		end.addEventListener("mouseover", function(){
+
 			if (win){
-				alert("You Win!");
+				status.innerHTML = "You Win!";
+
 			}
 			
 		})
