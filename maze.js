@@ -33,6 +33,7 @@ window.addEventListener("load", function(){
 			{
 				myBoundary[i].setAttribute("class", "boundary");
 			}
+			status;
 			var top = maze.offsetTop;
 			var left = maze.offsetLeft;
 			var height = maze.offsetHeight;
@@ -45,15 +46,11 @@ window.addEventListener("load", function(){
 				console.log(x);
 				if ((x < left) || (x > width + left) || (y < top) || (y > height + top))
 				{
-					console.log('test');
 					for (var i = 0; i < myBoundary.length - 1; i++)
 					{
 						myBoundary[i].setAttribute("class", "boundary youlose");
-						win = false;
-
-						status.innerHTML = "You're Cheating!";
-
 					}
+					status.innerHTML = "You're Cheating!";
 			}
 		});
 	});
